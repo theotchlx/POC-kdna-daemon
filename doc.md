@@ -17,7 +17,7 @@ Every step in this documentation is followed by the `init.sh` script.
 ## II. Activate the service  
 1. Run the command: `systemctl daemon-reload`.  
 2. Run the command: `systemctl enable kdnad.service`.  
-3. Run the command: `python3 /root/kdna_service/main.py`.  
+3. Run the command: `psystemctl start kdnad.service`.  
 
 Logs will now appear periodically in `/root/kdna_service/logs.kdna`.  
 
