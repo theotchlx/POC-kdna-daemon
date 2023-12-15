@@ -1,9 +1,14 @@
 """
-    This program is started by the kdna daemon. It generates a log every x seconds to demonstrate the python service.
+This program is started at boot by the kdna daemon. It generates a log every x seconds to demonstrate the python service.
 
-    Inputs:
-        This program takes one command-line argument x, an integer interpreted as the time in seconds between logs.
-    Outputs:
+The program takes one integer command-line argument as input, interpreted as the time in seconds between logs.
+
+Contents:
+    - :func:`main`: generates logs every x seconds (delay given as command-line argument).
+
+:author: TCHILINGUIRIAN Théo
+:email: theo.tchlx@gmail.com
+:date: 2023-12-15
 """
 
 
@@ -25,6 +30,24 @@ def main():
         2 -> 'ValueError' (e.g. during type conversion).
         3 -> 'IndexError' (e.g. during sys.argv list traversal).
     """
+    """
+    Main function. Generates logs every on a given delay in seconds (delay given as command-line argument).
+
+    The command-line argument is retrieved in a try/catch block. If no exceptions are raised, an infinite loop starts and the function creates logs periodically.
+
+    :return: returns an error code among (0, 1, 2, 3)
+    :rtype: int
+
+    :raises ValueError: May occur during conversion of the command-line argument from string to integer.
+    :raises IndexError: May occur during argument list traversal (empty sys.argv list, no command-line arguments).
+
+    :note:
+    The imported packages are subprocess, time and sys.
+    subprocess is used to run bash commands in a shell from the program.
+    time is used to wait for the chosen delay between logs.
+    sys is used to retrieve command-line arguments
+    """
+
 
     try:
         x = int(sys.argv[1])  # This catches the first argument (if it exists) after main.py in the command-line. Pattern example : python3 main.py arg1 arg2 arg3 ...
@@ -49,6 +72,8 @@ def main():
 
     return 1  # Catches general exceptions / errors
 
+
+# End of function definitions #
 
 if __name__ == '__main__':
     main()
